@@ -11,11 +11,12 @@ export async function POST(request: Request) {
 
     await prisma.todo.createMany({
         data: [
-            { description: 'priemra desripcion', complete: true },
+            { description: 'primera desripcion', complete: true },
             { description: 'adios segunda', complete: false },
             { description: 'adios tercera', complete: false },
             { description: 'adios  cuarta', complete: false },
+            { description: 'adios  quinta', complete: true},
         ]
     })
- return NextResponse.json({ message: 'Soy la respuesta de seed 2' })
+ return NextResponse.json({ message: 'Soy la respuesta de seed 3' })
 }
