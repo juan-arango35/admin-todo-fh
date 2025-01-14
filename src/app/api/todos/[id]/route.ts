@@ -12,7 +12,7 @@ interface ParametrosProps {
 
 
 export async function GET(request: Request, { params }: ParametrosProps) {
-    const {id } = params
+    const {id } = await params
     const todo = await prisma.todo.findFirst({
         where: {
           id: id,
@@ -32,7 +32,7 @@ const putSchema = yup.object({
 
 
 export async function PUT(request: Request, { params }: ParametrosProps) {
-    const {id } = params
+    const {id } = await params
     const todo = await prisma.todo.findFirst({
         where: {
           id: id,
