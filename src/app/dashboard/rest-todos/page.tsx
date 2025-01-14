@@ -1,6 +1,6 @@
+import { FormNewTodo } from "@/components/FormNewTodo";
 import { prisma } from "@/lib/prisma";
 import TodosGrid from "@/todos/components/TodosGrid";
-
 
 export default async function TodosPage() {
   /*   useEffect(() => {
@@ -21,9 +21,11 @@ export default async function TodosPage() {
 
   return (
     <div>
-     {/*  agregar formulario para agregar todo */}
-     
-     <TodosGrid todos={todos}/>
+      <div className="w-full px-3 mx-5 mb-5">
+        <FormNewTodo />
+      </div>
+
+      <TodosGrid todos={todos} />
     </div>
   );
 }
