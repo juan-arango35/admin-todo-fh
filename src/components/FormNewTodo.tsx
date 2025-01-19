@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
 import { createTodo, deleteTodoCompleted } from "../todos/helpers/todos";
 import { useRouter } from "next/navigation";
-import { addTodo } from "@/todos/actions/todo-actions";
+import { addTodo, deleteTodo } from "@/todos/actions/todo-actions";
 
 export const FormNewTodo = () => {
   const [description, setDescription] = useState("");
@@ -45,7 +45,8 @@ export const FormNewTodo = () => {
       <span className="flex flex-1"></span>
 
       <button
-        onClick={deleteCompleted}
+        /*    onClick={deleteCompleted} */
+        onClick={()=>deleteTodo()}
         type="button"
         className="flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all"
       >
