@@ -13,7 +13,7 @@ export const FormNewTodo = () => {
     e.preventDefault();
     if (description.trim().length === 0) return;
     
-     createTodo(description);
+     await createTodo(description);
   
     setDescription("");
     router.refresh();
