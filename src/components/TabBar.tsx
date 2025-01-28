@@ -1,5 +1,6 @@
 "use client";
 
+import { setCookie } from "cookies-next";
 import { useState } from "react";
 
 interface Props {
@@ -12,6 +13,7 @@ const TabBar = ({ tabOptions = [1, 2, 3, 4], currentTab = 1 }: Props) => {
 
 const onSelectetedTab =(tab: number)=>{
     setSelected(tab)
+    setCookie("selectedTab",tab.toString()) // con esto ya esta utilizando cookies y me mantiene seleccionado
 }
 
   return (
