@@ -10,6 +10,7 @@ export const getCookieCart = (): { [id: string]: number } => {
 
 export const addProductToCart = (id: string) => {
   const cookieCart = getCookieCart();
+  console.log(cookieCart);
   if (cookieCart[id]) {
     cookieCart[id]++;
   } else {
@@ -18,7 +19,23 @@ export const addProductToCart = (id: string) => {
   setCookie("cart", JSON.stringify(cookieCart));
 };
 
+export const removeProductFromCart = (id: string) => {
+  const cookieCart = getCookieCart();
+  console.log(cookieCart);
 
-export const removeProductFromCart =(id: string)=>{
-    
-}
+  delete cookieCart[id];
+
+  setCookie("cart", JSON.stringify(cookieCart));
+};
+
+//para eliminar uno a uno los elementos
+export const removeOneProductFromCart = (id: string) => {
+  const cookieCart = getCookieCart();
+  if (cookieCart[id]) {
+    cookieCart[id]--;
+  }
+  if (cookieCart[id] === 0) {
+    delete cookieCart[id];
+  }
+  setCookie("cart", JSON.stringify(cookieCart));
+};
