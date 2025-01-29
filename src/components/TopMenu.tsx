@@ -1,7 +1,22 @@
+import { cookies } from "next/headers"
 import { CiBellOn, CiChat1, CiMenuBurger, CiSearch, CiShoppingBasket } from "react-icons/ci"
 
 
-const TopMenu = () => {
+const TopMenu = async () => {
+  const cookieStore = await cookies()
+  const cart = await JSON.parse(cookieStore.get("cart")?.value ?? "{}")
+
+
+  const getTotalCount=()=>{
+   let item =0;
+   Object.values( cart ).forEach((value)=> {
+    item = item + (value  as number)
+   })
+   return item
+  }
+
+
+
   return (
     <div className="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
 
@@ -29,7 +44,9 @@ const TopMenu = () => {
         </button>
         <button className="flex  p-2 items-center justify-center h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200">
         {/*   <CiBellOn size={25}/> */}
-        <span className="text-sm mr-2 text-blue-900 font-bold">10</span>
+        <span className="text-sm mr-2 text-blue-900 font-bold">
+          {getTotalCount()}
+        </span>
         <CiShoppingBasket size={25}/>
         </button>
       </div>
