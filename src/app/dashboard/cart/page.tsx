@@ -2,6 +2,7 @@ import { Product } from "@/products/data/products";
 import { cookies } from "next/headers";
 import { products } from "../../../products/data/products";
 import { ItemCard } from "@/shopping-cart/components/ItemCard";
+import WitgetItem from "@/components/WitgetItem";
 
 export const metadata = {
   title: "Carrito de Compras",
@@ -31,6 +32,8 @@ const CartPage = async () => {
     [id: string]: number;
   };
   const productsInCart = getProductsIncart(cart);
+  // hacemos la funcion para el componente que esta al costado y me da los detalles del producto ya en el carrito
+  const totalToPay = productsInCart.reduce((prev, current)=>(current.product.price * current.quantity) + prev, 0)
   return (
     <div>
       <h1 className="text-5xl">Productos en el carrito</h1>
@@ -40,6 +43,14 @@ const CartPage = async () => {
           {productsInCart.map(({ product, quantity }) => (
             <ItemCard key={product.id} product={product} quantity={quantity} />
           ))}
+        </div>
+        <div className="flex flex-col  w-full sm:w-4/12">
+          <WitgetItem title="total a pagar" >
+            <div className="mt-2 flex justify-center gap-4">
+              <h3 className="text-3xl font-bold text-gray-700"> ${(totalToPay*1.15).toFixed(2)}  </h3>
+            </div>
+            <span className="font-bold text-center text-gray-600">Impuesto 15% : ${(totalToPay*0.15).toFixed(2)}</span>
+          </WitgetItem>
         </div>
       </div>
     </div>
