@@ -39,3 +39,23 @@ export const removeOneProductFromCart = (id: string) => {
   }
   setCookie("cart", JSON.stringify(cookieCart));
 };
+
+//esta es la funcion para eliminar los elementos de 1 en 1 del carrito de compras
+
+export const removeSingleItemFromCart = (id: string) => {
+  //tomamos el carrito igual como esta nuestro objeto
+  const cookieCart = getCookieCart();
+  //verificar si el id existe
+  if (!cookieCart[id]) {
+    return;
+  }
+  const itemsInCard = cookieCart[id] - 1;
+
+  if (itemsInCard <= 0) {
+    delete cookieCart[id];
+  } else {
+    cookieCart[id] = itemsInCard;
+  }
+
+  setCookie("cart", JSON.stringify(cookieCart));
+};
