@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import {  CiLogout } from "react-icons/ci"
 import SidebarItem from "./SidebarItem"
-import {  IoCalendarOutline, IoCheckboxOutline, IoCodeWorkingOutline, IoListOutline, IoPrintOutline } from "react-icons/io5"
+import {  IoCalendarOutline, IoCheckboxOutline, IoCodeWorkingOutline, IoListOutline, IoPerson, IoPersonOutline, IoPrintOutline } from "react-icons/io5"
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 
@@ -35,6 +35,11 @@ const menuItems =[
     icon: <IoPrintOutline/>,
     title: "Products",
     path: "/dashboard/products"
+  },
+  {
+    icon: <IoPersonOutline/>,
+    title: "Profile",
+    path: "/dashboard/profile"
   }
 ]
 
