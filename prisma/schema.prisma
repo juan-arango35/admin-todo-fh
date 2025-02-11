@@ -60,6 +60,7 @@ model Session {
 model User {
   id            String    @id @default(uuid())
   name          String?
+  password      String?  //agregado para el login personalizado
   roles         String[] @default(["user"])  //agregamos los roles
   isActive      Boolean @default(true)   //para ver si esta activo
   email         String?   @unique
