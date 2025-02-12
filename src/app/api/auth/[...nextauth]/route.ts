@@ -34,7 +34,7 @@ export const authOptions = {
         const user = await sigInEmailPassword(credentials!.email, credentials!.password)
   
         if (user) {
-          // Any object returned will be saved in `user` property of the JWT
+          // Any object returned will be saved in user property of the JWT
           return user
         } 
         return null
